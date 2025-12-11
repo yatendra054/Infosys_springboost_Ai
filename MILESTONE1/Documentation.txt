@@ -1,0 +1,57 @@
+--Week 1: Dataset Collection & Image Analysis::::
+
+1. Scanned Document Dataset Overview
+For this project, a dataset of 700+ scanned document images was collected using multiple scanner devices.
+All images were scanned at 300 DPI, which is considered a high-resolution standard and preserves fine scanner-specific noise patterns useful for device identification.
+
+The dataset consists of 3 different scanner brands/models:
+HP
+Canon
+Epson
+
+Each image is stored in TIFF (.tif) format, which is a lossless imaging standard.
+TIFF retains:
+
+Original pixel values
+Fine-grain noise patterns
+Scanner illumination and texture artifacts.
+
+
+2. Dataset Labeling
+Each scanned document was properly labeled with:
+Scanner brand/model (e.g., hp, canon, epson)
+
+File name
+Directory structure mapping
+
+| Image Path        | Brand |
+| ----------------- | ----- |
+| .\Canon\s2_25.tif | canon |
+| .\Epson\s8_47.tif | epson |
+| .\Hp\s11_3.tif    | hp    |
+
+3. Basic Image Property Analysis
+Before preprocessing, each TIFF image was analyzed for:
+
+Resolution (pixels): e.g., 2480 × 3508 (typical A4 at 300 DPI)
+DPI (Dots Per Inch): Confirmed to be 300 DPI
+Format: All images in .tif format
+Color channels: Many TIFFs are in RGB, some in grayscale
+Bit-depth: Usually 8-bit per channel.
+
+--Week 2: Image Preprocessing & Dataset Structuring::::
+
+1. Image Resizing
+To prepare the dataset for machine learning, all images were resized to a fixed dimension (224×224).
+
+2. Grayscale Conversion
+All images were converted to grayscale to simplify training.
+Grayscale reduces input channels from 3 → 1, improving:
+Model efficiency
+Learning focus
+
+3. Dataset Structuring
+Final preprocessed images were:
+Converted into NumPy arrays
+Reshaped into consistent dimensions: (224, 224, 1)
+Stored in arrays X (images) and y (labels)
